@@ -18,8 +18,8 @@
 	
 	function insert_event_part ($part_id,$event_id,$paid,$trans_id,$con)
 	{
-		$query="INSERT INTO event_participants (part_id,event_id,paid,trans_id) VALUES   ($part_id,$event_id,'$paid',$trans_id)";
-		$result = $con->query($query) or die(mysqli_error($con));
+		$query="INSERT INTO event_participants (part_id,event_id,paid,trans_id) VALUES   ($part_id,$event_id,'$paid','$trans_id')";
+		$result = $con->query($query) or die("event participation".mysqli_error($con));
 		return 1;
 	}
 	
@@ -75,7 +75,8 @@
 	if(isset($_POST['trans_id']) && isset($_POST['ac_no']))
 		$paid='y';
 	else
-		$paid='n';	
+		$paid='n';
+			
 	for($i=1;$i<=$_SESSION['e_count'];$i++)	
 	{	
 		$verify=insert_event_part ($_SESSION['head_id'],$_SESSION['event_id'][$i],$paid,$trans_id,$con);
