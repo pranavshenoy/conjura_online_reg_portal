@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 27, 2017 at 12:49 PM
+-- Generation Time: Feb 27, 2017 at 01:20 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.24
 
@@ -122,6 +122,63 @@ INSERT INTO `events` (`event_id`, `event_name`, `amount`, `pre_reg`, `team`) VAL
 (1081, 'fifa_tournament', 100, 'n', 'n'),
 (1082, 'nfs_most_wanted', 100, 'n', 'n');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_participants`
+--
+
+CREATE TABLE `event_participants` (
+  `sno` int(10) NOT NULL,
+  `part_id` int(10) NOT NULL,
+  `event_id` int(10) NOT NULL,
+  `paid` char(2) NOT NULL,
+  `trans_id` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `participants`
+--
+
+CREATE TABLE `participants` (
+  `id` int(10) NOT NULL COMMENT '11001',
+  `name` varchar(25) NOT NULL,
+  `college` varchar(30) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `gender` char(2) NOT NULL,
+  `accommodation` char(2) NOT NULL,
+  `email` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team`
+--
+
+CREATE TABLE `team` (
+  `sno` int(10) NOT NULL,
+  `event_id` int(10) NOT NULL,
+  `head_id` int(10) NOT NULL,
+  `member_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `sno` int(10) NOT NULL,
+  `part_id` int(10) NOT NULL,
+  `amt` int(10) NOT NULL,
+  `trans_id` varchar(25) NOT NULL,
+  `acnt_no` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -133,6 +190,33 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`event_id`);
 
 --
+-- Indexes for table `event_participants`
+--
+ALTER TABLE `event_participants`
+  ADD PRIMARY KEY (`sno`);
+
+--
+-- Indexes for table `participants`
+--
+ALTER TABLE `participants`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `phone` (`phone`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `team`
+--
+ALTER TABLE `team`
+  ADD PRIMARY KEY (`sno`);
+
+--
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`sno`),
+  ADD UNIQUE KEY `trans_id` (`trans_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -141,6 +225,26 @@ ALTER TABLE `events`
 --
 ALTER TABLE `events`
   MODIFY `event_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1083;
+--
+-- AUTO_INCREMENT for table `event_participants`
+--
+ALTER TABLE `event_participants`
+  MODIFY `sno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+--
+-- AUTO_INCREMENT for table `participants`
+--
+ALTER TABLE `participants`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '11001', AUTO_INCREMENT=11001;
+--
+-- AUTO_INCREMENT for table `team`
+--
+ALTER TABLE `team`
+  MODIFY `sno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `sno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
