@@ -8,8 +8,11 @@
 		if($temp==-1)
 		{
 			$query="INSERT INTO participants (name,college,email,phone,gender,accommodation) VALUES   ('$name','$college','$email','$phone','$gender','$accommodation')";
-			$result = $con->query($query)  or die(mysqli_error($con));		
-			return 1;
+			$result = $con->query($query);		
+			if($result==TRUE)	
+				return 1;
+			else 
+			 	return -1;	
 		}
 		return $temp;         //id
 	}
@@ -17,22 +20,31 @@
 	function insert_event_part ($part_id,$event_id,$paid,$trans_id,$con)
 	{
 		$query="INSERT INTO event_participants (part_id,event_id,paid,trans_id) VALUES   ($part_id,$event_id,'$paid','$trans_id')";
-		$result = $con->query($query) or die("event participation".mysqli_error($con));
-		return 1;
+		$result = $con->query($query);
+		if($result==TRUE)	
+			return 1;
+		else 
+		 	return -1;
 	}
 	
 	function insert_transaction ($part_id,$amt,$trans_id,$acnt_no,$con)
 	{
 		$query="INSERT INTO transactions (part_id,amt,trans_id,acnt_no) VALUES  ($part_id,$amt,'$trans_id','$acnt_no')";
-		$result = $con->query($query) or die(mysqli_error($con));
-		return 1;
+		$result = $con->query($query);
+		if($result==TRUE)	
+			return 1;
+		else 
+		 	return -1;
 	}
 	
 	function insert_team ($event_id,$head_id,$member_id,$con)
 	{
 		$query="INSERT INTO team (event_id,head_id,member_id) VALUES   ($event_id,$head_id,$member_id)";
 		$result = $con->query($query) or die(mysqli_error($con));
-		return 1;
+		if($result==TRUE)	
+			return 1;
+		else 
+		 	return -1;
 	}
 	
 	function get_part_id($email,$phone,$con)
@@ -104,16 +116,11 @@
 			
 			$verify=insert_participant($fullname,$email,$phone,$accommodation,$gender,$college,$con);
 			if($verify==1)
-			{
 				$member_id=get_part_id($email,$phone,$con);
-			}
 			else // verify is the member id
-			{
 				$member_id=$verify;
-			}
 		
 			// adding to team table
-		
 			$verify=insert_team ($_SESSION['team_event_id'][$i],$_SESSION['head_id'],$member_id,$con);
 			if($verify!=1)
 			{
