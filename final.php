@@ -61,14 +61,16 @@
 		$trans_id=cleanup($_POST['trans_id'],$con);
 		$acnt_no=cleanup($_POST['ac_no'],$con);
 	
-		
-		$verify=insert_transaction($_SESSION['head_id'],$_SESSION['total_amt'],$trans_id,$acnt_no,$con);
-		if($verify!=1)
+		if(isset($_POST['trans_id']) && isset($_POST['ac_no']))
 		{
-			$_SESSION['ERROR']="Registraion Incomplete";
-			header("location:index.php");
-		}	
-	
+			$verify=insert_transaction($_SESSION['head_id'],$_SESSION['total_amt'],$trans_id,$acnt_no,$con);
+			if($verify!=1)
+			{
+				$_SESSION['ERROR']="Registraion Incomplete";
+				header("location:index.php");
+			}	
+		}
+		
 		//store in event_participation
 		if(isset($_POST['trans_id']) && isset($_POST['ac_no']))
 			$paid='y';
