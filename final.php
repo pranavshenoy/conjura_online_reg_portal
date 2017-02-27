@@ -112,8 +112,7 @@
 			if(isset($_POST['accommodation'.$i]))
 				$accommodation='y';
 			else	
-				$accommodation='n';
-			
+				$accommodation='n';	
 			$verify=insert_participant($fullname,$email,$phone,$accommodation,$gender,$college,$con);
 			if($verify==1)
 				$member_id=get_part_id($email,$phone,$con);
