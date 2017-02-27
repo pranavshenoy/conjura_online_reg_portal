@@ -1,5 +1,7 @@
 <?php
 	require_once("db_connect.php");
+	require_once("initialise.php");
+	
 	$query="select * from events";       // for dropdown list
 	$result_events = $con->query($query);
 	if($result_events->num_rows>0)
@@ -14,12 +16,12 @@
 ?>
 
 <script type="text/javascript">
-	
+	var event_count=0;
 	var dropdown_code;
+	
 	function more()
 	{
 	  var event_loop=' ';
-	  var event_count=0;
 		for(var i=1;i<=document.getElementById("e_count").value;i++)
 		{
 			 event_loop+='<div class="row">   \
