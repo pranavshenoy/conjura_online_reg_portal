@@ -48,10 +48,10 @@
 		if($result_events->num_rows>0)
 		{
 			while($row=$result_events->fetch_assoc())
-			{
+			{		
 					for($i=1;$i<=$_SESSION['e_count'];$i++)
-					{
-						if(strcmp($row['event_name'],$_POST['events'.$i])==0)           // checks whether the entered event by user is $row[]
+					{	
+						if(strcmp($row['event_name'],cleanup($_POST['events'.$i],$con))==0)           // checks whether the entered event by user is $row[]
 						{
 							$event_temp++;
 							$_SESSION['event_id'][$event_temp]=$row['event_id'];
