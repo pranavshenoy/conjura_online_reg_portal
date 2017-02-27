@@ -6,11 +6,11 @@
 	function insert_participant($name,$email,$phone,$accommodation,$gender,$college,$con)
 	{
 		$temp=get_part_id($email,$phone,$con);	
-		if(temp==-1)
+		if($temp==-1)
 		{
 			$query="INSERT INTO participants (name,college,email,phone,gender,accommodation) VALUES   ('$name','$college','$email','$phone','$gender','$accommodation')";
-			$result = $con->query($query)  or die(mysqli_error($con));
-			//echo "inserted successfully";		
+			//echo $query."\n";
+			$result = $con->query($query)  or die(mysqli_error($con));		
 			return 1;
 		}
 		return $temp;         //id
@@ -57,7 +57,7 @@
 	}
 	
 	
-	//echo "store in transactions database\n";
+
 	//store in transactions database
 	$trans_id=cleanup($_POST['trans_id']);
 	$acnt_no=cleanup($_POST['ac_no']);
@@ -70,7 +70,7 @@
 		header("location:index.php");
 	}	
 	
-	echo "store in event_participation\n";
+	//echo "store in event_participation\n";
 	//store in event_participation
 	if(isset($_POST['trans_id']) && isset($_POST['ac_no']))
 		$paid='y';
@@ -87,7 +87,7 @@
 		}
 	}
 	
-	echo "add member participants";
+	//echo "add member participants";
 	//add member participants
 
 	for($i=1;$i<=$_SESSION['team_count'];$i++)
@@ -106,7 +106,7 @@
 		$verify=insert_participant($fullname,$email,$phone,$accommodation,$gender,$college,$con);
 		if($verify==1)
 		{
-			$member_id=get_part_id($email,$phone);
+			$member_id=get_part_id($email,$phone,$con);
 		}
 		else // verify is the member id
 		{
@@ -114,7 +114,7 @@
 		}
 		
 		// adding to team table
-		echo "adding to team table";
+		//echo "adding to team table";
 		
 		$verify=insert_team ($_SESSION['team_event_id'][$i],$_SESSION['head_id'],$member_id,$con);
 		if($verify!=1)
@@ -124,7 +124,7 @@
 		}
 		
 		$_SESSION['MESSAGE']="Registraion Successfull. Your Conjura ID is CT".$_SESSION['head_id'];
-		header("location:index.php");
+		//header("location:index.php");
 	}
 	
 	
