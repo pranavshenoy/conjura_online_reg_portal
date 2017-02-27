@@ -1,12 +1,6 @@
 <?php
 	require_once("functions.php");
-	session_start();
-	define('DB_HOST', 'localhost'); 
-	define('DB_NAME', 'conjura'); 
-	define('DB_USER','root'); 
-	define('DB_PASSWORD',''); 
-	$con=mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME) or die("Failed to connect to MySQL: " . mysql_error()); 
-	
+	require_once("db_connect.php");
 	$fullname=cleanup($_POST['fullName']);
 	$college=cleanup($_POST['college']);
 	$email=cleanup($_POST['email']);
@@ -14,6 +8,7 @@
 	$_SESSION['e_count']=cleanup($_POST['e_count']);
 	$_SESSION['msg_pre_pay']='pre payment mandatory for :';
 	$_SESSION['total_amt']=0;
+	$_SESSION['new_user']=0;
 	
 	if(isset($_POST['phone']))
 		$accommodation='y';
@@ -34,18 +29,19 @@
 		else
 		{
 			$_SESSION['query']="INSERT INTO participants (name,college,email,phone,gender,accommodation) VALUES	('$fullname','$college','$email','$phone','$gender','$accommodation')";
+				$_SESSION['new_user']=1;
 		//	$result = $con->query($_SESSION['query']) or die(mysqli_error($con));        for next page 
 		}
-
+		
 		//fetch event details
 		$pre_pay_flag =0;   // pre payment required
 		$event_temp=1;			// for storing event-id
-		$e_team_temp=0;			//first increment then use 
+		$e_team_temp=0;			// number of team events selected
 		$query="select * from events";     
 		$result_events = $con->query($query);
 ?>
 
-	<form method="post" id="form1" class="form-horizontal" role="form" action="database.php"> <div id="error" style="text-align:center"></div>	 
+		<form method="post" id="form1" class="form-horizontal" role="form" action="final.php"> <div id="error" style="text-align:center"></div>	 
 
 <?php
 		if($result_events->num_rows>0)
@@ -74,48 +70,7 @@
 							{
 								$e_team_temp++;
 								$_SESSION['team_event'][$e_team_temp]=$row['event_id'];
-								echo "Team Event Details for ".$row['event_name'];
-								?>
-										<div class="form-group">
-												<div class="col-md-4">
-													<label for="name">*&nbsp;Full Name: </label>
-													<input type="text" class="form-control" style="border-radius:0px" name=<?php echo "fullname".$e_team_temp ?> id="fullName" placeholder="Enter your Full Name" required>
-												</div>
-												
-												<div class="col-md-4">
-													<label for="name">*&nbsp;College: </label>
-													<input type="text" class="form-control" style="border-radius:0px" name=<?php echo "college".$e_team_temp ?> id="college" placeholder="Enter your College Name" required >
-												</div>								
-										</div>
-
-										<div class="form-group">
-											<div class="col-md-4">
-												<label for="name">*&nbsp;Email Id: </label>
-												<input type="email" class="form-control" style="border-radius:0px" name=<?php echo "email".$e_team_temp ?> id="email" placeholder="Enter your Email Id">
-											</div>
-											<div class="col-md-4">
-												<label for="name">*&nbsp;Contact Number: </label>
-												<input type="text" class="form-control" style="border-radius:0px" name=<?php echo "phone".$e_team_temp ?> id="phone" placeholder="Enter your Contact Number" required>
-											</div>
-										</div>
-
-										<div class='form-group'>
-											<div class="col-md-4">
-												<label for="name">Need Accommodation?:</label>
-												<div class="radio">
-													<label><input type="checkbox" value="y" id="sw" name=<?php echo "accommodation".$e_team_temp ?>>&nbsp;&nbsp;Yes</label>
-												</div>
-											</div>
-											<br/>
-											<div class="col-md-4">
-												<label for="name">*&nbsp;Gender:</label>
-												<div class="radio">
-													<label><input type="radio" value="m" id="sw" name=<?php echo "gender".$e_team_temp ?>>&nbsp;&nbsp;Male</label>
-													<label><input type="radio" value="f" id="sw" name=<?php echo "gender".$e_team_temp ?>>&nbsp;&nbsp;Female</label>
-												</div>
-											</div>
-										</div>								
-								<?php	 
+								include 'team_member.php';
 							}
 						}
 					}			
@@ -127,21 +82,11 @@
 		$_SESSION['MESSAGE']='ALL FIELDS ARE MANDATORY';
 		//redirect to home page
 	}
-	echo $_SESSION['total_amt'];
+	echo "Total amount to be paid is:  ".$_SESSION['total_amt'];
+	include 'transaction.php';
 ?>
-<div class="form-group">
-	<div class="col-md-4">
-		<label for="name">Transaction ID </label>
-		<input type="text" class="form-control" style="border-radius:0px" name="trans_id" id="trans_id" placeholder="Enter The Transaction ID" <?php if($pre_pay_flag==1) echo "required"?> >
-	</div>
-	
-	<div class="col-md-4">
-		<label for="name">Paytm Account Number</label>
-		<input type="text" class="form-control" style="border-radius:0px" name="ac_no" id="ac_no" placeholder="Enter Paytm Account Number" <?php if($pre_pay_flag==1) echo "required"?> >
-	</div>								
-</div>
 
-<button type="submit" >REGISTER</button><button >PAY</button>
+
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
