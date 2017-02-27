@@ -113,7 +113,8 @@
 		  <div class="col-md-4">
 		    <label for="name">*&nbsp;Full Name: </label>
 		    <input type="text" class="form-control" style="border-radius:0px" name="fullName" id="fullName" placeholder="Enter your Full Name" required>
-		  <span style="color:red;font-size:16px">&nbsp;(Name of Team Lead for Team Events)</span></div>
+		  	<span style="color:red;font-size:16px">&nbsp;(Name of Team Lead for Team Events)</span>
+		  </div>
 		  <div class="col-md-4">
 		    <label for="name">*&nbsp;College: </label>
 		    <input type="text" class="form-control" style="border-radius:0px" name="college" id="college" placeholder="Enter your College Name" required >
