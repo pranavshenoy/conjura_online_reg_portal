@@ -88,12 +88,11 @@
 	include 'transaction.php';
 	$_SESSION['team_count']=$e_team_temp;
 ?>
-<button type="submit" >REGISTER</button><button >PAY</button>
+<button type="submit" >REGISTER</button>
 
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 </form>
 
-
-
+<button >PAY</button>
