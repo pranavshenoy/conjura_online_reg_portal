@@ -9,4 +9,4 @@
 		<input type="text" class="form-control" style="border-radius:0px" name="ac_no" id="ac_no" placeholder="Enter Paytm Account Number" <?php if($pre_pay_flag==1) echo "required"?> >
 	</div>								
 </div>
-<button type="submit" >REGISTER</button><button >PAY</button>
+

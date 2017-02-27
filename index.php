@@ -27,7 +27,7 @@
 					<div class="col-md-6">\
 						<label for="name">*&nbsp;Event Name:</label>\
 						<select class="form-control" id="select'+(++event_count)+'" onchange="changing()" name="events'+(event_count)+'" style="border-radius:0px">\
-							<option value="" selected>Select...</option>'+dropdown_code+'\
+						'+dropdown_code+'\
 						</select>\
 					</div>				\
 				</div>';

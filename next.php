@@ -1,6 +1,7 @@
 <?php
 	require_once("functions.php");
 	require_once("db_connect.php");
+	
 	$fullname=cleanup($_POST['fullName']);
 	$college=cleanup($_POST['college']);
 	$email=cleanup($_POST['email']);
@@ -9,12 +10,13 @@
 	$_SESSION['msg_pre_pay']='pre payment mandatory for :';
 	$_SESSION['total_amt']=0;
 	$_SESSION['new_user']=0;
+	$gender=$_POST['gender'];
 	
-	if(isset($_POST['phone']))
+	if(isset($_POST['accommodation']))
 		$accommodation='y';
 	else	
 		$accommodation='n';
-	$gender=$_POST['gender'];
+	
 	
 	if(isset($fullname) && isset($college) && isset($email) && isset($phone) && isset($gender) )
 	{
@@ -30,19 +32,18 @@
 		{
 			$_SESSION['query']="INSERT INTO participants (name,college,email,phone,gender,accommodation) VALUES	('$fullname','$college','$email','$phone','$gender','$accommodation')";
 				$_SESSION['new_user']=1;
-		//	$result = $con->query($_SESSION['query']) or die(mysqli_error($con));        for next page 
+				$_SESSION['email_head']=$email;
+				$_SESSION['phone_head']=$phone;				
 		}
 		
 		//fetch event details
 		$pre_pay_flag =0;   // pre payment required
-		$event_temp=1;			// for storing event-id
-		$e_team_temp=0;			// number of team events selected
+		$event_temp=0;			// for storing event-id
+		$e_team_temp=0;			// number of team events selected  ---count
 		$query="select * from events";     
 		$result_events = $con->query($query);
 ?>
-
-		<form method="post" id="form1" class="form-horizontal" role="form" action="final.php"> <div id="error" style="text-align:center"></div>	 
-
+		<form method="post" id="form2" class="form-horizontal" role="form" action="final.php"> <div id="error" style="text-align:center"></div>	 
 <?php
 		if($result_events->num_rows>0)
 		{
@@ -52,9 +53,9 @@
 					{
 						if(strcmp($row['event_name'],$_POST['events'.$i])==0)           // checks whether the entered event by user is $row[]
 						{
-							$_SESSION['event_id'][$event_temp]=$row['event_id'];
 							$event_temp++;
-							
+							$_SESSION['event_id'][$event_temp]=$row['event_id'];
+														
 							// total amount
 							$_SESSION['total_amt']+=$row['amount'];
 					
@@ -69,23 +70,25 @@
 							if(strcmp($row['team'],'y')==0)
 							{
 								$e_team_temp++;
-								$_SESSION['team_event'][$e_team_temp]=$row['event_id'];
+								$_SESSION['team_event_id'][$e_team_temp]=$row['event_id'];
 								include 'team_member.php';
 							}
 						}
 					}			
 			}
 		}
+		
 	}
 	else
 	{
-		$_SESSION['MESSAGE']='ALL FIELDS ARE MANDATORY';
+		$_SESSION['ERROR']='ALL FIELDS ARE MANDATORY';
 		//redirect to home page
 	}
 	echo "Total amount to be paid is:  ".$_SESSION['total_amt'];
 	include 'transaction.php';
+	$_SESSION['team_count']=$e_team_temp;
 ?>
-
+<button type="submit" >REGISTER</button><button >PAY</button>
 
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
