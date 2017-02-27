@@ -1,6 +1,5 @@
 <?php
 	require_once("db_connect.php");
-	
 	$query="select * from events";       // for dropdown list
 	$result_events = $con->query($query);
 	if($result_events->num_rows>0)

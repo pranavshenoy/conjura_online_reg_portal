@@ -1,6 +1,5 @@
 <?php  
 	
-	require_once("functions.php");
 	require_once("db_connect.php");
 	
 	function insert_participant($name,$email,$phone,$accommodation,$gender,$college,$con)
@@ -58,8 +57,8 @@
 	
 
 	//store in transactions database
-	$trans_id=cleanup($_POST['trans_id']);
-	$acnt_no=cleanup($_POST['ac_no']);
+	$trans_id=cleanup($_POST['trans_id'],$con);
+	$acnt_no=cleanup($_POST['ac_no'],$con);
 	
 	
 	$verify=insert_transaction($_SESSION['head_id'],$_SESSION['total_amt'],$trans_id,$acnt_no,$con);
@@ -89,10 +88,10 @@
 
 	for($i=1;$i<=$_SESSION['team_count'];$i++)
 	{
-		$fullname=cleanup($_POST['fullName'.$i]);
-		$college=cleanup($_POST['college'.$i]);
-		$email=cleanup($_POST['email'.$i]);
-		$phone=cleanup($_POST['phone'.$i]);
+		$fullname=cleanup($_POST['fullName'.$i],$con);
+		$college=cleanup($_POST['college'.$i],$con);
+		$email=cleanup($_POST['email'.$i],$con);
+		$phone=cleanup($_POST['phone'.$i],$con);
 		$gender=$_POST['gender'.$i];
 		
 		if(isset($_POST['accommodation'.$i]))

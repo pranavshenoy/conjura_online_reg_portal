@@ -1,12 +1,12 @@
 <?php
-	require_once("functions.php");
+
 	require_once("db_connect.php");
 	
-	$fullname=cleanup($_POST['fullName']);
-	$college=cleanup($_POST['college']);
-	$email=cleanup($_POST['email']);
-	$phone=cleanup($_POST['phone']);
-	$_SESSION['e_count']=cleanup($_POST['e_count']);
+	$fullname=cleanup($_POST['fullName'],$con);
+	$college=cleanup($_POST['college'],$con);
+	$email=cleanup($_POST['email'],$con);
+	$phone=cleanup($_POST['phone'],$con);
+	$_SESSION['e_count']=cleanup($_POST['e_count'],$con);
 	$_SESSION['msg_pre_pay']='pre payment mandatory for :';
 	$_SESSION['total_amt']=0;
 	$_SESSION['new_user']=0;
