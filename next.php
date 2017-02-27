@@ -18,7 +18,7 @@
 		$accommodation='n';
 	
 	
-	if(isset($fullname) && isset($college) && isset($email) && isset($phone) && isset($gender) )
+	if(isset($fullname) && isset($college) && isset($email) && isset($phone) && isset($gender) && $_SESSION['e_count']>=1 )
 	{
 		$query="select * from participants where email='".$email."' and phone='".$phone."';";
 		$result = $con->query($query);
@@ -82,7 +82,7 @@
 	else
 	{
 		$_SESSION['ERROR']='ALL FIELDS ARE MANDATORY';
-		//redirect to home page
+		header("location:index.php");
 	}
 	echo "Total amount to be paid is:  ".$_SESSION['total_amt'];
 	include 'transaction.php';

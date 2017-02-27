@@ -117,13 +117,7 @@
 			$_SESSION['ERROR']="Registraion Incomplete";
 			header("location:index.php");
 		}
-		
-		$_SESSION['MESSAGE']="Registraion Successfull. Your Conjura ID is CT".$_SESSION['head_id'];
-		header("location:index.php");
 	}
-	
-	
-
-	
-		
+	$_SESSION['MESSAGE']="Registraion Successfull. Your Conjura ID is CT".$_SESSION['head_id'];
+	header("location:index.php");	
 ?>
