@@ -43,7 +43,41 @@
 		$query="select * from events";     
 		$result_events = $con->query($query);
 ?>
-		<form method="post" id="form2" class="form-horizontal" role="form" action="final.php"> <div id="error" style="text-align:center"></div>	 
+ <html>
+
+	<head>
+		<title>Registration -Conjura 17</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="keywords" content="conjura,Conjura,tkm,cultural,tkmce,techno,national,,event" />
+		<meta name="description" content="National Level Techno-Cultural Fest of TKM College Of Engineering, Kollam, Kerala.March 16 - 19, 2017" />
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		
+		<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+		<
+		<link rel="shortcut icon" type="image/ico" href="../images/fav.ico" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		
+	</head>
+
+	<body " style="height:100%">
+		<nav role="navigation" class="shadow navbar navbar-default navbar-fixed-top" style="background-color: white; ">
+			<div class="container-fluid">
+				  <div class="navbar-header">
+				      
+				      
+				  </div>
+				  
+			</div>
+		</nav>
+
+		<br/><br/><br/>
+	
+		<div class="container">
+		<h2 style="text-align: center;">PAYMENT</h2><br/>
+		<div class="form-labels-on-top">
+		<form method="post" id="form2" class="form-horizontal" role="form" action="final.php"> <div id="error" ></div>	 
 <?php
 		if($result_events->num_rows>0)
 		{
@@ -84,15 +118,28 @@
 		$_SESSION['ERROR']='ALL FIELDS ARE MANDATORY';
 		header("location:index.php");
 	}
-	echo "Total amount to be paid is:  ".$_SESSION['total_amt'];
+	//echo "Total amount to be paid is:  ".$_SESSION['total_amt'];
+	echo "<h4 class='teamEvent'><span class='teamEventdetails'>Total amount to be paid is </span><span class='amount'>".$_SESSION['total_amt']."</span></h4>";
 	include 'transaction.php';
 	$_SESSION['team_count']=$e_team_temp;
 ?>
-<button type="submit" >REGISTER</button>
+<div style="text-align: center;margin-top: 18px;">
+<button type="submit" style="border-radius:0px;margin-right: :5px;" class="btn btn-primary" >Register</button>
+<button style="border-radius:0px;margin-left: 5px;" class="btn btn-primary">Pay Amount</button>
+</div>
 
+
+
+
+
+
+</form>
+
+</div>
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-</form>
-
-<button >PAY</button>
+</div>
+<?php include 'footer.php';  ?>
+</body>
+</html>
