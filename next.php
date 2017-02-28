@@ -124,8 +124,8 @@
 ?>
 
 <div style="text-align: center;margin-top: 18px;">
-<button type="submit" style="border-radius:0px;margin-right: :5px;" class="btn btn-primary" >Register</button>
-<button style="border-radius:0px;margin-left: 5px;" class="btn btn-primary">Pay Amount</button>
+<button type="submit" style="border-radius:0px;" class="btn btn-primary" >Register</button>
+
 </div>
 
 </form>
