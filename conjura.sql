@@ -33,15 +33,16 @@ CREATE TABLE `events` (
   `amount` int(10) NOT NULL,
   `pre_reg` char(2) NOT NULL COMMENT 'y if advance payment required',
   `team` char(2) NOT NULL COMMENT 'y if its a team event',
-  `event_display` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=10001;
+  `event_display` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`event_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1001;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`event_id`, `event_name`, `amount`, `pre_reg`, `team`, `event_display`) VALUES
-(, 'voice_of_conjura', 100, 'n', 'n', 'VOICE OF CONJURA'),
+INSERT INTO `events` ( `event_name`, `amount`, `pre_reg`, `team`, `event_display`) VALUES
+( 'voice_of_conjura', 100, 'n', 'n', 'VOICE OF CONJURA'),
 ( 'unplugged', 400, 'n', 'y', 'UNPLUGGED'),
 ( 'solowestern', 100, 'n', 'n', 'SOLOWESTERN'),
 ( 'overdrive', 400, 'n', 'y', 'OVERDRIVE'),
@@ -131,7 +132,7 @@ INSERT INTO `events` (`event_id`, `event_name`, `amount`, `pre_reg`, `team`, `ev
 --
 
 CREATE TABLE `event_participants` (
-  `sno` int(10) NOT NULL,
+  `sno` int(10) NOT NULL PRIMARY KEY,
   `part_id` int(10) NOT NULL REFERENCES participants(id),
   `event_id` int(10) NOT NULL REFERENCES events(event_id),
   `paid` char(2) NOT NULL,
@@ -145,13 +146,13 @@ CREATE TABLE `event_participants` (
 --
 
 CREATE TABLE `participants` (
-  `id` int(10) NOT NULL COMMENT '11001',
+  `id` int(10) NOT NULL PRIMARY KEY,
   `name` varchar(25) NOT NULL,
   `college` varchar(30) NOT NULL,
-  `phone` varchar(15) NOT NULL,
+  `phone` varchar(15) NOT NULL UNIQUE KEY,
   `gender` char(2) NOT NULL,
   `accommodation` char(2) NOT NULL,
-  `email` varchar(40) NOT NULL
+  `email` varchar(40) NOT NULL UNIQUE KEY
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -161,7 +162,7 @@ CREATE TABLE `participants` (
 --
 
 CREATE TABLE `team` (
-  `sno` int(10) NOT NULL,
+  `sno` int(10) NOT NULL PRIMARY KEY,
   `event_id` int(10) NOT NULL REFERENCES events(event_id),
   `head_id` int(10) NOT NULL REFERENCES participants(id),
   `member_id` int(10) NOT NULL REFERENCES participants(id)
@@ -174,10 +175,10 @@ CREATE TABLE `team` (
 --
 
 CREATE TABLE `transactions` (
-  `sno` int(10) NOT NULL,
+  `sno` int(10) NOT NULL PRIMARY KEY,
   `part_id` int(10) NOT NULL REFERENCES participants(id),
   `amt` int(10) NOT NULL,
-  `trans_id` varchar(25) NOT NULL,
+  `trans_id` varchar(25) NOT NULL UNIQUE KEY,
   `acnt_no` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -188,44 +189,7 @@ CREATE TABLE `transactions` (
 --
 -- Indexes for table `events`
 --
-ALTER TABLE `events`
-  ADD PRIMARY KEY (`event_id`);
 
---
--- Indexes for table `event_participants`
---
-ALTER TABLE `event_participants`
-  ADD PRIMARY KEY (`sno`);
-
---
--- Indexes for table `participants`
---
-ALTER TABLE `participants`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `phone` (`phone`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Indexes for table `team`
---
-ALTER TABLE `team`
-  ADD PRIMARY KEY (`sno`);
-
---
--- Indexes for table `transactions`
---
-ALTER TABLE `transactions`
-  ADD PRIMARY KEY (`sno`),
-  ADD UNIQUE KEY `trans_id` (`trans_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
---
--- AUTO_INCREMENT for table `events`
---
-ALTER TABLE `events`
-  MODIFY `event_id` int(10) NOT NULL  AUTO_INCREMENT, AUTO_INCREMENT=1083;
 --
 -- AUTO_INCREMENT for table `event_participants`
 --
