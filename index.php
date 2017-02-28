@@ -9,7 +9,7 @@
 		echo '<script>';
 		echo 'dropdown_code="';
 		while($row=$result_events->fetch_assoc())
-			echo '<option value='.$row['event_name'].'>'.$row['event_name'].'</option>';
+			echo '<option value='.$row['event_name'].'>'.$row['event_display'].'</option>';
 		echo '"';		
 		echo '</script>';
 	}
