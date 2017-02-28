@@ -1,3 +1,10 @@
+<?php 
+	if(isset($_SESSION['msg_pre_pay']) && $pre_pay_flag==1) 
+	{
+		echo "<span style='color:red;'>".strtoupper($_SESSION['msg_pre_pay'])."</span>";
+		unset($_SESSION['msg_pre_pay']);	
+	}
+?>
 <div class="form-group">
 	<div class="col-xs-12">
 		<label for="name">Transaction ID </label>

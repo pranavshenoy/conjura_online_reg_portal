@@ -7,7 +7,7 @@
 	$email=cleanup($_POST['email'],$con);
 	$phone=cleanup($_POST['phone'],$con);
 	$_SESSION['e_count']=cleanup($_POST['e_count'],$con);
-	$_SESSION['msg_pre_pay']='pre payment mandatory for :';
+	$_SESSION['msg_pre_pay']='PRE PAYMENT MANDATORY FOR :';
 	$_SESSION['total_amt']=0;
 	$_SESSION['new_user']=0;
 	$gender=$_POST['gender'];
@@ -57,8 +57,7 @@
 		<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 		<
 		<link rel="shortcut icon" type="image/ico" href="../images/fav.ico" />
-		<script type="text/javascript" src="js/jquery.js"></script>
-		
+		<script type="text/javascript" src="js/jquery.js"></script>	
 	</head>
 
 	<body " style="height:100%">
@@ -97,7 +96,7 @@
 							if(strcmp($row['pre_reg'],'y')==0)             
 							{
 								$pre_pay_flag=1;		
-								$_SESSION['msg_pre_pay']+=' '.$row['event_name'];					 
+								$_SESSION['msg_pre_pay'].=$row['event_name'];
 							}
 							
 							//team event 
@@ -123,15 +122,11 @@
 	include 'transaction.php';
 	$_SESSION['team_count']=$e_team_temp;
 ?>
+
 <div style="text-align: center;margin-top: 18px;">
 <button type="submit" style="border-radius:0px;margin-right: :5px;" class="btn btn-primary" >Register</button>
 <button style="border-radius:0px;margin-left: 5px;" class="btn btn-primary">Pay Amount</button>
 </div>
-
-
-
-
-
 
 </form>
 
