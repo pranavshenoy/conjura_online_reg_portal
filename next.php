@@ -27,11 +27,14 @@
 		{
 			$row=$result->fetch_assoc();
 			$_SESSION['head_id']=$row['id'];           //  stores the id of lead participant
+			echo "not a new user";						//delete
+			$_SESSION['new_user']=0;
 		}	
 		else
 		{
 			$_SESSION['query']="INSERT INTO participants (name,college,email,phone,gender,accommodation) VALUES	('$fullname','$college','$email','$phone','$gender','$accommodation')";
 				$_SESSION['new_user']=1;
+				echo "new user";							//new user
 				$_SESSION['email_head']=$email;
 				$_SESSION['phone_head']=$phone;				
 		}

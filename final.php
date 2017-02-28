@@ -1,7 +1,5 @@
 <?php  
-	
 	require_once("db_connect.php");
-	
 	function insert_participant($name,$email,$phone,$accommodation,$gender,$college,$con)
 	{
 		$temp=get_part_id($email,$phone,$con);	
@@ -16,7 +14,6 @@
 		}
 		return $temp;         //id
 	}
-	
 	function insert_event_part ($part_id,$event_id,$paid,$trans_id,$con)
 	{
 		$query="INSERT INTO event_participants (part_id,event_id,paid,trans_id) VALUES   ($part_id,$event_id,'$paid','$trans_id')";
@@ -40,7 +37,7 @@
 	function insert_team ($event_id,$head_id,$member_id,$con)
 	{
 		$query="INSERT INTO team (event_id,head_id,member_id) VALUES   ($event_id,$head_id,$member_id)";
-		$result = $con->query($query) or die(mysqli_error($con));
+		$result = $con->query($query);
 		if($result==TRUE)	
 			return 1;
 		else 
@@ -63,12 +60,21 @@
 	if($temp_flag==1)
 	{
 		$temp_flag=0;
+				// insert new user
 		if($_SESSION['new_user']==1)
 		{
 			$_SESSION['new_user']=0;
-			$result = $con->query($_SESSION['query']) or die(mysqli_error($con)); 
+			$result = $con->query($_SESSION['query']); 
+			if(!$result)
+			{
+				unset($_SESSION['MESSAGE']);
+				$_SESSION['ERROR']="Registration Incomplete. You Might be Already Registered with different email or phone";
+				header("location:index.php");
+				return;
+			}
 			$_SESSION['head_id']=get_part_id($_SESSION['email_head'],$_SESSION['phone_head'],$con);
 		}
+		
 		//store in transactions database
 		$trans_id=cleanup($_POST['trans_id'],$con);
 		$acnt_no=cleanup($_POST['ac_no'],$con);
@@ -78,8 +84,10 @@
 			$verify=insert_transaction($_SESSION['head_id'],$_SESSION['total_amt'],$trans_id,$acnt_no,$con);
 			if($verify!=1)
 			{
+				unset($_SESSION['MESSAGE']);
 				$_SESSION['ERROR']="Registraion Incomplete";
 				header("location:index.php");
+				return;
 			}	
 		}
 		
@@ -94,8 +102,10 @@
 			$verify=insert_event_part ($_SESSION['head_id'],$_SESSION['event_id'][$i],$paid,$trans_id,$con);
 			if($verify!=1)
 			{
+				unset($_SESSION['MESSAGE']);
 				$_SESSION['ERROR']="Registraion Incomplete";
 				header("location:index.php");
+				return;
 			}
 		}
 	
@@ -123,8 +133,10 @@
 			$verify=insert_team ($_SESSION['team_event_id'][$i],$_SESSION['head_id'],$member_id,$con);
 			if($verify!=1)
 			{
+				unset($_SESSION['MESSAGE']);
 				$_SESSION['ERROR']="Registraion Incomplete";
 				header("location:index.php");
+				return;
 			}
 		}
 		$_SESSION['MESSAGE']="Registraion Successfull. Your Conjura ID is CT".$_SESSION['head_id'];

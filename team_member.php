@@ -29,8 +29,8 @@
 		<div class="col-xs-12">
 		    <label for="name">Gender&nbsp;*</label>
 		    <div style="padding-top: 0; padding-left: 1px;" class="radio">
-		      <label style="padding-right: 8px;"><input type="radio" value="m" id="sw" name="gender">&nbsp;&nbsp;Male</label>
-		      <label><input type="radio" value="f" id="sw" name="gender">&nbsp;&nbsp;Female</label>
+		      <label style="padding-right: 8px;"><input type="radio" value="m" id="sw" name="gender" required>&nbsp;&nbsp;Male</label>
+		      <label><input type="radio" value="f" id="sw" name="gender" required>&nbsp;&nbsp;Female</label>
 		    </div>
 		  </div>
 		  
