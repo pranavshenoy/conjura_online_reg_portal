@@ -1,4 +1,4 @@
-<?php echo "<h4 class='teamEvent'><span class='teamEventdetails'>Event details of </span>".$row['event_name']."</h4>"; ?>
+<?php echo "<h4 class='teamEvent'><span class='teamEventdetails'>Additional member details of </span><br><br>".$row['event_name']."</h4>"; ?>
 <div class="form-group">
 		<div class="col-xs-12">
 			<label for="name">Full Name&nbsp;* </label>

@@ -22,7 +22,14 @@
 	{
 	  var event_loop=' ';
 	  var event_count=0;
-		for(var i=1;i<=document.getElementById("e_count").value;i++)
+		var count=document.getElementById("e_count").value;
+		if(count<=0)
+		{
+			document.getElementById("error").innerHTML = "NUMBER OF EVENTS MUST BE GREATER THAN ZERO";
+			return false;
+		}
+		document.getElementById("error").innerHTML="";
+		for(var i=1;i<=count;i++)
 		{
 			 event_loop+='<div>   \
 					<div class="col-xs-12">\

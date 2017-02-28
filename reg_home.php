@@ -1,5 +1,5 @@
 	<div class="form-labels-on-top">
-	<form method="post" id="form1" class="form-horizontal" role="form" action="next.php"> <div id="error"></div>	 
+	<form method="post" id="form1" class="form-horizontal" role="form" action="next.php"> <div style="color:red" id="error"></div>	 
 		 <div class="form-group">
 		  <div class="col-xs-12">
 		    <label for="name">Full Name&nbsp;*</label>
@@ -49,7 +49,7 @@
 		  <div class="">			<!--  displays number of events   -->
 					<div class="col-xs-12">
 						<label for="name">No. Of Events&nbsp;* </label>
-						<input type="number" class="form-control" style="border-radius:0px" name="e_count" id="e_count" onchange="more()" value="" required></input>
+						<input type="number" class="form-control" style="border-radius:0px"  name="e_count" id="e_count" onchange="more()" value="" required></input>
 				 	</div>
 				 	
 		  </div>
