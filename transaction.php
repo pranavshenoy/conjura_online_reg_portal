@@ -1,13 +1,13 @@
 <?php 
 	if(isset($_SESSION['msg_pre_pay']) && $pre_pay_flag==1) 
 	{
-		echo "<span style='color:red;'>".strtoupper($_SESSION['msg_pre_pay'])."</span>";
+		echo "<p class='msgprepay'>".$_SESSION['msg_pre_pay']."</p>";
 		unset($_SESSION['msg_pre_pay']);	
 	}
 ?>
 
 	<div class=" col-xs-12" style="border: 2px solid rgba(44, 62, 80,0.2);text-align:center;font-size: 13px;">
-		<label for="name" style="color:#96044b;">Paytm Account Number</label>
+		<label for="name" style="color:#96044b;">Paytm Account Number:9876543210</label>
 	</div>								
 
 <div style="text-align: center; position: relative;top: 18px;">

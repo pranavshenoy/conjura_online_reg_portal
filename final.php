@@ -26,10 +26,10 @@
 		 	return -1;
 	}
 	
-	function insert_transaction ($part_id,$amt,$trans_id,$acnt_no,$con)
+	function insert_transaction ($part_id,$amt,$trans_id,$con)
 	{
-		$query="INSERT INTO transactions (part_id,amt,trans_id,acnt_no) VALUES  ($part_id,$amt,'$trans_id','$acnt_no')";
-		$result = $con->query($query);
+		$query="INSERT INTO transactions (part_id,amt,trans_id) VALUES  ($part_id,$amt,'$trans_id')";
+		$result = $con->query($query) or die(mysqli_error($con));
 		if($result==TRUE)	
 			return 1;
 		else 
@@ -104,22 +104,21 @@
 		
 		//store in transactions database
 		$trans_id=cleanup($_POST['trans_id'],$con);
-		$acnt_no=cleanup($_POST['ac_no'],$con);
-	
-		if(isset($_POST['trans_id']) && isset($_POST['ac_no']))
+
+		if($_POST['trans_id']!='')
 		{
-			$verify=insert_transaction($_SESSION['head_id'],$_SESSION['total_amt'],$trans_id,$acnt_no,$con);
+			$verify=insert_transaction($_SESSION['head_id'],$_SESSION['total_amt'],$trans_id,$con);
 			if($verify==-1)
 			{
 				unset($_SESSION['MESSAGE']);
-				$_SESSION['ERROR']="Registraion Incomplete";
+				$_SESSION['ERROR']="Registraion Incomplete...Problem with payment.";
 				header("location:index.php");
 				return;
 			}	
 		}
 		
 		//store in event_participation
-		if(isset($_POST['trans_id']) && isset($_POST['ac_no']))
+		if($_POST['trans_id']!='')
 			$paid='y';
 		else
 			$paid='n';

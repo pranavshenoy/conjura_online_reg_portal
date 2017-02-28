@@ -178,8 +178,7 @@ CREATE TABLE `transactions` (
   `sno` int(10) NOT NULL PRIMARY KEY,
   `part_id` int(10) NOT NULL REFERENCES participants(id),
   `amt` int(10) NOT NULL,
-  `trans_id` varchar(25) NOT NULL UNIQUE KEY,
-  `acnt_no` varchar(30) NOT NULL
+  `trans_id` varchar(25) NOT NULL UNIQUE KEY
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

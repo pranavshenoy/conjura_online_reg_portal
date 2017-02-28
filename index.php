@@ -25,7 +25,8 @@
 		var count=document.getElementById("e_count").value;
 		if(count<=0)
 		{
-			document.getElementById("error").innerHTML = "NUMBER OF EVENTS MUST BE GREATER THAN ZERO";
+			document.getElementById("error").innerHTML = "Number of events must be greater than zero";
+			document.getElementById("add_event").innerHTML='';
 			return false;
 		}
 		document.getElementById("error").innerHTML="";
@@ -34,7 +35,7 @@
 			 event_loop+='<div>   \
 					<div class="col-xs-12">\
 						<label for="name">Event Name&nbsp;*</label>\
-						<select class="form-control" id="select'+(++event_count)+'" onchange="changing()" name="events'+(event_count)+'" style="border-radius:0px">\
+						<select class="form-control" id="select'+(++event_count)+'" onchange="changing()" name="events'+(event_count)+'" style="border-radius:0px" >\
 						'+dropdown_code+'\
 						</select>\
 					</div>				\
@@ -67,11 +68,8 @@
 			<div class="container-fluid">
 				  <div class="navbar-header">
 				       <a class="navbar-brand" href="#">
-					    
 					  </a>
-				      
 				  </div>
-				  
 			</div>
 		</nav>
 
