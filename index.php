@@ -58,8 +58,8 @@
 		
 		<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 		<
-		<link rel="shortcut icon" type="image/ico" href="../images/fav.ico" />
-		<script type="text/javascript" src="js/jquery.js"></script>
+		<link rel="shortcut icon" type="image/ico" href="" />
+		
 		
 	</head>
 
@@ -67,9 +67,10 @@
 		<nav role="navigation" class="shadow navbar navbar-default navbar-fixed-top" style="background-color: white; ">
 			<div class="container-fluid">
 				  <div class="navbar-header">
-				       <a class="navbar-brand" href="#">
-					  </a>
+				       <a href="http://www.conjura.in"><img src="images/title.svg" class="navbar-brand">
+					  </img></a>
 				  </div>
+				  
 			</div>
 		</nav>
 

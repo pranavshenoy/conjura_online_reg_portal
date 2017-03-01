@@ -45,26 +45,45 @@
 		  
 		</div> 
 		 		 
-		<div class="form-group" >
-		  <div class="">			<!--  displays number of events   -->
+		    <div class="form-group" >
+		        <div class="">			<!--  displays number of events   -->
 					<div class="col-xs-12">
 						<label for="name">No. Of Events&nbsp;* </label>
 						<div style="color:#96044b;font-size:13px;text-align:left;" id="error"></div>
-						<input type="number" class="form-control" style="border-radius:0px"  name="e_count" id="e_count" onkeyup="more()" value="" required></input>
+						<input type="number" class="form-control" style="border-radius:0px"  name="e_count" id="e_count" onkeyup="more()" onchange="more()" value="" required></input>
 				 	</div>
 				 	
-		  </div>
+		        </div>
+
 		  
-		  <div class="" id="add_event">      <!-- dropdown list       -->        				
-		  </div>			<!-- end of add_event      --> 
+		  		<div class="" id="add_event">      <!-- dropdown list       -->        				
+		        </div>			<!-- end of add_event      --> 
 		
-		</div>        <!-- end of form_group       --> 
+			</div>        <!-- end of form_group       --> 
 			
-		<br/>
+		<br>
 		<div  class="form-group"> 
 		  <div style="text-align: center;" class="col-xs-12">
 		    <button type="submit" style="border-radius:0px" class="btn btn-primary">Next</button>
 		  </div>
 		</div>
+		
+		
 	</form>
+	<hr class="style1">
+		<div class="instructions">
+			<h4 style="text-align: center;">Instructions</h4>
+			<ul>
+				<li>
+					<h6>Please note that the registration procedure for the  events in which preregistration is mandatory, will be considered complete only after you receive a confirmation email after the payment.<h6>
+				</li>
+				<li><h6>For team events,the participants are requested to enter the details of atleast two members<h6></li>
+
+			</ul>
+
+		</div>
+		<br>
+
 	</div>
+	
+	
