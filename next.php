@@ -66,11 +66,8 @@
 	<body " style="height:100%">
 		<nav role="navigation" class="shadow navbar navbar-default navbar-fixed-top" style="background-color: white; ">
 			<div class="container-fluid">
-				  <div class="navbar-header">
-				      
-				      
+				  <div class="navbar-header">      
 				  </div>
-				  
 			</div>
 		</nav>
 
