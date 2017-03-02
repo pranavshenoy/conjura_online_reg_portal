@@ -56,18 +56,19 @@
 		<meta name="description" content="National Level Techno-Cultural Fest of TKM College Of Engineering, Kollam, Kerala.March 16 - 19, 2017" />
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
-		
 		<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-		<
-		<link rel="shortcut icon" type="image/ico" href="../images/fav.ico" />
+		<link rel="shortcut icon" type="image/ico" href="images/fav.ico" />
 		<script type="text/javascript" src="js/jquery.js"></script>	
 	</head>
 
-	<body " style="height:100%">
+	<body>
 		<nav role="navigation" class="shadow navbar navbar-default navbar-fixed-top" style="background-color: white; ">
 			<div class="container-fluid">
-				  <div class="navbar-header">      
+				  <div class="navbar-header">
+				       <a href="http://conjura.in"><img src="images/title.svg" class="navbar-brand">
+					  </img></a>
 				  </div>
+				  
 			</div>
 		</nav>
 

@@ -111,7 +111,7 @@
 			if($verify==-1)
 			{
 				unset($_SESSION['MESSAGE']);
-				$_SESSION['ERROR']="Registraion Incomplete...Problem with payment.";
+				$_SESSION['ERROR']="Registration Incomplete...Problem with payment.";
 				header("location:index.php");
 				return;
 			}	
@@ -128,7 +128,7 @@
 			if($verify==-1)
 			{
 				unset($_SESSION['MESSAGE']);
-				$_SESSION['ERROR']="Registraion Incomplete";
+				$_SESSION['ERROR']="Registration Incomplete";
 				header("location:index.php");
 				return;
 			}
@@ -147,13 +147,13 @@
 				if($verify==-1)
 				{
 					unset($_SESSION['MESSAGE']);
-					$_SESSION['ERROR']="Registraion Incomplete";
+					$_SESSION['ERROR']="Registration Incomplete";
 					header("location:index.php");
 					return;
 				}
 			}					
 		}
-		$_SESSION['MESSAGE']="Registraion Successfull. Your Conjura ID is CT".$_SESSION['head_id'];
+		$_SESSION['MESSAGE']="Registration Successfull. Your Conjura ID is CT&nbsp;".$_SESSION['head_id'];
 		header("location:index.php");
 		require_once("initialise.php");	
 	}	

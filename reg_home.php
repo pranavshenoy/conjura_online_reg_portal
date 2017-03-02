@@ -15,7 +15,7 @@
 		<div class="form-group">
 		  <div class="col-xs-12">
 		    <label for="name">Email Id&nbsp;* </label>
-		    <input type="email" class="form-control" style="border-radius:0px" name="email" id="email" placeholder="Enter your Email Id">
+		    <input type="email" class="form-control" style="border-radius:0px" name="email" id="email" placeholder="Enter your Email Id" required>
 		  </div>
 		  </div>
 		  <div class="form-group">
@@ -71,13 +71,16 @@
 		
 	</form>
 	<hr class="style1">
-		<div class="instructions">
+		<div class="instructions" style="padding-bottom:30px">
 			<h4 style="text-align: center;">Instructions</h4>
 			<ul>
 				<li>
-					<h6>Please note that the registration procedure for the  events in which preregistration is mandatory, will be considered complete only after you receive a confirmation email after the payment.<h6>
+					<h6>Please note that the registration procedure for the  events in which Pre-Registration is mandatory, will be considered complete only after you receive a confirmation email after the payment.<h6>
 				</li>
-				<li><h6>For team events,the participants are requested to enter the details of atleast two members<h6></li>
+				<li><h6>For team events,the participants are requested to enter the details of an additional team member by clicking next button.<h6></li>
+				<li>For queries, please contact:</li>
+				<div class="col-md-6"><h6>Ramees<br>+91 9645795467</h6></div>
+				<div class="col-md-6"><h6>Fasil Firos K V<br>+91 8943212918<h6></div>
 
 			</ul>
 

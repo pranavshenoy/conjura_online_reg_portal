@@ -8,14 +8,14 @@
 		<div class="form-group">
 		<div class="col-xs-12">
 			<label for="name">College&nbsp;* </label>
-			<input type="text" class="form-control" style="border-radius:0px" name=<?php echo "college".$e_team_temp ?> id="college" placeholder="Enter your College Name" required >
+			<input type="text" class="form-control" style="border-radius:0px" name=<?php echo "college".$e_team_temp ?> id="college" placeholder="Enter your College Name" required>
 		</div>								
 </div>
 
 <div class="form-group">
 	<div class="col-xs-12">
 		<label for="name">Email Id&nbsp;* </label>
-		<input type="email" class="form-control" style="border-radius:0px" name=<?php echo "email".$e_team_temp ?> id="email" placeholder="Enter your Email Id">
+		<input type="email" class="form-control" style="border-radius:0px" name=<?php echo "email".$e_team_temp ?> id="email" placeholder="Enter your Email Id" required>
 	</div>
 	</div>
 	<div class="form-group">

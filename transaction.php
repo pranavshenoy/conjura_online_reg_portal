@@ -7,7 +7,7 @@
 ?>
 
 	<div class=" col-xs-12" style="border: 2px solid rgba(44, 62, 80,0.2);text-align:center;font-size: 13px;">
-		<label for="name" style="">Paytm Account Number <br><span style="color:#96044b;">9876543210</span></label>
+		<label for="name" style="">Paytm Account Number <br><span style="color:#96044b;"> +91 9567016262</span></label>
 	</div>								
 
 <div style="text-align: center; position: relative;top: 18px;">

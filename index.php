@@ -57,17 +57,16 @@
 		<link href="css/style.css" rel="stylesheet">
 		
 		<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-		<
-		<link rel="shortcut icon" type="image/ico" href="" />
-		
+		<link rel="shortcut icon" href="images/fav.ico" type="image/x-icon" />
+		<script type="text/javascript" src="js/jquery.js"></script>
 		
 	</head>
 
-	<body " style="height:100%">
+	<body>
 		<nav role="navigation" class="shadow navbar navbar-default navbar-fixed-top" style="background-color: white; ">
 			<div class="container-fluid">
 				  <div class="navbar-header">
-				       <a href="http://www.conjura.in"><img src="images/title.svg" class="navbar-brand">
+				       <a href="http://conjura.in"><img src="images/title.svg" class="navbar-brand">
 					  </img></a>
 				  </div>
 				  
