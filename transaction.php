@@ -15,12 +15,31 @@
 </div>
 <br>
 <hr class="style1">
+<div class="instructions">
+			<h4 style="text-align: center;">Instructions For Payment</h4>
+			<ul>
+				<li>
+					<h6><span style="color:#2c3e50">Step 1 :</span>Click the Pay Amount button for payment.<h6>
+				</li>
+				<li>
+					<h6><span style="color:#2c3e50">Step 2 :</span>Using your paytm account, transfer the above mentioned amount to the specified account number.<h6>
+				</li>
+				<li>
+					<h6><span style="color:#2c3e50">Step 3 :</span>Once the transaction is successful,enter the transaction id in the input field provided and click the Register button.<h6>
+				</li>
+				<li>
+					<h6><span style="color:#2c3e50">Step 4 :</span>If the registration is successful, your Conjura Id  will be displayed and will receive a confirmation mail within 48hrs.<h6>
+				</li>			
+			</ul>
 
+</div>
+<hr class="style1">
 <div class="form-group">
 	<div class="col-xs-12">
 		<label for="name">Transaction ID </label>
 		<input type="text" class="form-control" style="border-radius:0px" name="trans_id" id="trans_id" placeholder="Enter The Transaction ID" <?php if($pre_pay_flag==1) echo "required"?> >
 	</div>
-	</div>
+</div>
 	
+
 
