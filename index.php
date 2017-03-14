@@ -2,7 +2,7 @@
 	require_once("db_connect.php");
 	require_once("initialise.php");
 	
-	$query="select * from events";       // for dropdown list
+	$query="select * from events where lock_event=0";       // for dropdown list
 	$result_events = $con->query($query);
 	if($result_events->num_rows>0)
 	{

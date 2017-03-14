@@ -31,5 +31,8 @@
 	else
 		echo "NO BODY HAS PAID";
 
+	echo "LIST OF PARTICIPANTS";
+	$query = "sel";
+
 ?>
 </html>
