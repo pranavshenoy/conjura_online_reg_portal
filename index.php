@@ -1,7 +1,6 @@
 <?php
 	require_once("db_connect.php");
 	require_once("initialise.php");
-	
 	$query="select * from events where lock_event=0";       // for dropdown list
 	$result_events = $con->query($query);
 	if($result_events->num_rows>0)
@@ -55,7 +54,6 @@
 		<meta name="description" content="National Level Techno-Cultural Fest of TKM College Of Engineering, Kollam, Kerala.March 16 - 19, 2017" />
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
-		
 		<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 		<link rel="shortcut icon" href="images/fav.ico" type="image/x-icon" />
 		<script type="text/javascript" src="js/jquery.js"></script>
